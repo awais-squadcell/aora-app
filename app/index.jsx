@@ -1,4 +1,4 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, ScrollView } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "../constants";
 import CustomButton from "../components/CustomButton";
@@ -8,6 +8,7 @@ import { router } from "expo-router";
 export default function App() {
   return (
     <SafeAreaView className="bg-primary flex-1">
+      <ScrollView>
       <View className="w-full h-screen justify-center items-center p-[1vw]">
           <Image source={images.logo} 
           className="w-[50vw] h-[10vh]"
@@ -26,9 +27,10 @@ export default function App() {
           <Text className = 'text-[2vh] font-pregular text-gray-400 text-center p-[1vw]'>Where creativity meets innovation: embark on a journey of limitless exploration with Aora</Text>
           <CustomButton 
           title='Continue with Email'
-          handlePress={()=> router.push('/signup')}
+          handlePress={()=> router.push('/login')}
           containerStyles='mt-[2vh]'/>
         </View>
+      </ScrollView>
       <StatusBar backgroundColor='#161622' style='light'/>
     </SafeAreaView>
   )
