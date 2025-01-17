@@ -22,16 +22,19 @@ const submit = ()=> {
           <Image 
           source={images.logo} resizeMode='contain' 
           className="w-[40vw] h-[8vh] mb-[5vh]"/>
-          <Text className="text-[4vh] text-white font-psemibold mb-[3vh]">Login to Aora</Text>
+          <Text className="text-[4vh] text-white font-psemibold px-[2vw] mb-[3vh]">Login to Aora</Text>
+          <View className="w-full justify-center items-center flex-col">
           <FormField 
           title = 'Email'
           value={form.email}
+          placeholder='me@email.com'
           handleChangeText = {(e)=> setform({ ...form, email: e})} 
           keyboardType = "email-address"
           otherStyles='mb-[4vh] mx-[2vw]'/>
           <FormField 
           title = 'Password'
           value={form.password}
+          placeholder='password'
           handleChangeText = {(e)=> setform({ ...form, password: e})} otherStyles='mx-[2vw]'/>
           <CustomButton 
             title='Login'
@@ -42,6 +45,8 @@ const submit = ()=> {
             <Text className="text-[2vh] text-zinc-400 font-pregular">Don't have an account?</Text>
             <Link href='/signup' className="text-[2vh] text-secondary font-psemibold">Sign Up</Link>
           </View>  
+          </View>
+          
         </View>
       </ScrollView>
     </SafeAreaView>
