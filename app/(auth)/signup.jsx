@@ -14,7 +14,7 @@ const Signup = () => {
   const submit = async () => {
     if (!form.username || !form.email || !form.password) {
       Alert.alert("Error", "Please fill all the fields!");
-      return; // Prevent further execution
+      return; 
     }
 
     // Optional: Add basic validation for email and password here
@@ -23,12 +23,11 @@ const Signup = () => {
     try {
       await createUser(form.email, form.password, form.username);
 
-      // Navigate to home
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message);
     } finally {
-      setIsSubmitting(false); // Always reset loading state
+      setIsSubmitting(false); 
     }
   };
 
