@@ -4,8 +4,6 @@ import { icons } from "../constants";
 
 const SearchInput = ({ title, value, placeholder, handleChangeText, otherStyles, ...props }) => {
   const [isFocused, setIsFocused] = useState(false); 
-  const [showPassword, setShowPassword] = useState(false);
-
   return (
       <View
         className={`border-[1px] ${
@@ -13,25 +11,21 @@ const SearchInput = ({ title, value, placeholder, handleChangeText, otherStyles,
         } w-full h-[6vh] bg-black-200 p-[5vw] rounded-2xl items-center flex-row`}
       >
         <TextInput
-          className="flex-1 text-white font-psemibold text-base h-[10vh]"
+          className="flex-1 text-white font-pregular text-base h-[10vh]"
           value={value}
-          placeholder={placeholder}
+          placeholder='Search for videos'
           placeholderTextColor="#7b7b8b"
           onFocus={() => setIsFocused(true)} 
           onBlur={() => setIsFocused(false)}
           onChangeText={handleChangeText}
-          secureTextEntry={title === 'Password' && !showPassword}
           {...props}
         />
-        {title === 'Password' && (
-          <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
-            <Image
-              source={!showPassword ? icons.eye : icons.eyeHide}
-              className="h-[3vh] w-[6vw]"
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        )}
+        <TouchableOpacity>
+          <Image
+          source={icons.search}
+          resizeMode='contain'
+          className="w-[5vw] h-[5vh]"/>
+        </TouchableOpacity>
       </View>
   );
 };
