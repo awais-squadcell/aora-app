@@ -5,13 +5,14 @@ import { images } from "../../constants";
 import SearchInput from '../../components/SearchInput';
 import Trending from '../../components/Trending';
 import EmptyState from '../../components/EmptyState';
-import { getAllPosts } from '../../lib/appwrite';
+import { getAllPosts, getLatestPosts } from '../../lib/appwrite';
 import useAppwrite from '../../lib/useAppwrite';
 import VideoCards from '../../components/VideoCards';
 
 const Home = () => {
 
   const {data: posts, refetch} = useAppwrite(getAllPosts);
+  const {data: latestPosts} = useAppwrite(getLatestPosts);
 
   //Fetches video data upon top scroll
 const [refreshing, setRefreshing] = useState(false)
@@ -20,14 +21,13 @@ const onRefresh = async () => {
   await refetch();
   setRefreshing(false);
 }
-console.log(posts)
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList
         data={posts}
         keyExtractor={(item)=> item.$id}
         renderItem={({item})=> (
-          <VideoCards video = {item}/>
+          <VideoCards video = {item ?? []}/>
         )}
         ListHeaderComponent={()=>(
           <View className="my-6 px-4 space-y-6">
@@ -52,7 +52,7 @@ console.log(posts)
               <Text className="text-gray-500 text-[2vh] font-pregular mb-[2vh]">
                 Latest Videos
               </Text>
-              <Trending posts={[{id: 1}, {id: 2}, {id: 3}] ?? []}/>
+              <Trending posts={latestPosts ?? []}/>
             </View>
           </View>
         )}
