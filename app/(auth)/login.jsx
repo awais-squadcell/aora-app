@@ -5,13 +5,13 @@ import FormField from "../../components/FormField";
 import { useState } from "react";
 import CustomButton from "../../components/CustomButton";
 import { Link, router } from "expo-router";
-import { signIn } from "../../lib/appwrite";
+import { getCurrentUser, signIn } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
 
 const Login = () => {
   const [form, setForm] = useState({ email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { setIsLoggedIn, setuser } = useGlobalContext();
+  const { setuser, setIsLoggedIn} = useGlobalContext();
 
   const submit = async () => {
     if (!form.email || !form.password) {
@@ -26,12 +26,10 @@ const Login = () => {
       setuser(result);
       setIsLoggedIn(true);
 
-      Alert.alert("Success", "Successfully logged in!");
+      Alert.alert("Congrats", "You have successfully logged in!");
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message || "Failed to log in.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 

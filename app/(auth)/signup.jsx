@@ -11,7 +11,7 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 const Signup = () => {
   const [form, setForm] = useState({ username: "", email: "", password: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { setIsLoggedIn, setuser } = useGlobalContext();
+  const { setuser ,setIsLoggedIn } = useGlobalContext();
 
   const submit = async () => {
     if (!form.username || !form.email || !form.password) {
@@ -29,8 +29,6 @@ const Signup = () => {
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message || "Failed to sign up.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
