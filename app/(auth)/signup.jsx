@@ -29,6 +29,8 @@ const Signup = () => {
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message || "Failed to sign up.");
+    } finally {
+      setIsSubmitting(false)
     }
   };
 

@@ -1,4 +1,4 @@
-import { View, FlatList, Image, TouchableOpacity } from 'react-native'
+import { View, FlatList, Image, TouchableOpacity, Text } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { icons } from "../../constants";
@@ -66,6 +66,9 @@ const Profile = () => {
             subtitle='Followers'
             titleStyles='text-[2.5vh]'/>
             </View>
+            <Text className="text-gray-500 text-[2vh]">
+            Your Videos
+         </Text>
           </View>
         )}
         ListEmptyComponent={()=>(

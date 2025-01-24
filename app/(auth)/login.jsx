@@ -30,6 +30,8 @@ const Login = () => {
       router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message || "Failed to log in.");
+    } finally {
+      setIsSubmitting(false)
     }
   };
 

@@ -12,12 +12,12 @@ const FormField = ({ title, value, placeholder, handleChangeText, otherStyles, .
         {title}
       </Text>
       <View
-        className={`border-[1px] ${
+        className={`border ${
           isFocused ? 'border-secondary' : 'border-zinc-950'
         } w-full h-[6vh] bg-black-200 p-[5vw] rounded-2xl items-center flex-row`}
       >
         <TextInput
-          className="flex-1 text-white font-psemibold text-base h-[10vh]"
+          className="flex-1 text-white font-pmedium text-base h-[10vh] "
           value={value}
           placeholder={placeholder}
           placeholderTextColor="#7b7b8b"
