@@ -15,9 +15,10 @@ const Profile = () => {
   const logout = async () => {
     try {
       await signOut();
+      router.replace('/login');
       setuser(null);
       setIsLoggedIn(false);
-      router.replace('/login');
+      
     } catch (error) {
       console.error('Logout failed:', error.message);
     }
@@ -26,7 +27,6 @@ const Profile = () => {
 
   const {user, setuser, setIsLoggedIn} = useGlobalContext();
   const {data: posts} = useAppwrite(()=> getUserPosts(user.$id));
-
   return (
     <SafeAreaView className="bg-primary h-full">
       <FlatList

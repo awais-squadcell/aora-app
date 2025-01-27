@@ -2,7 +2,7 @@ import { useVideoPlayer, VideoView } from 'expo-video';
 import { useEventListener } from 'expo';
 import { View, StyleSheet } from 'react-native';
 
-export default function VideoController({ source, onVideoEnd, stopOtherVideos, width, height, contentFit }) {
+export default function VideoController({ source, controls, onVideoEnd, stopOtherVideos, width, height, contentFit }) {
 
   const dynamicStyles = styles({ height, width });
 
@@ -26,6 +26,7 @@ export default function VideoController({ source, onVideoEnd, stopOtherVideos, w
       <VideoView
         player={player}
         allowsPictureInPicture
+        nativeControls= {`${controls}`}
         startsPictureInPictureAutomatically
         contentFit={`${contentFit}`}
         style={dynamicStyles.video}

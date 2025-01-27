@@ -3,12 +3,14 @@ import React, { useState } from 'react';
 import { icons } from "../constants";
 import VideoController from './VideoController';
 
+
 const VideoCards = ({ video: { title, thumbnail, video, creator } }) => {
   const [playingVideoId, setPlayingVideoId] = useState(null);
 
+
   // Provide fallback values for creator
-  const username = creator?.username || 'Unknown';
-  const avatar = creator?.avatar || icons.defaultAvatar; // Use a default avatar image
+  const username = creator?.username;
+  const avatar = creator?.avatar; // Use a default avatar image
 
   const handleVideoEnd = () => {
     setPlayingVideoId(null); // Reset playingVideoId when the video ends
@@ -48,6 +50,9 @@ const VideoCards = ({ video: { title, thumbnail, video, creator } }) => {
       </View>
       {playingVideoId === video.$id ? (
         <VideoController
+        height= {200}
+        width={320}
+        contentFit={'cover'}
           source={video}
           onVideoEnd={handleVideoEnd}
           stopOtherVideos={stopOtherVideos}
@@ -56,7 +61,7 @@ const VideoCards = ({ video: { title, thumbnail, video, creator } }) => {
         <TouchableOpacity
           activeOpacity={0.7}
           onPress={() => setPlayingVideoId(video.$id)}
-          className="w-full h-[25vh] rounded-xl px-[2vw] relative justify-center items-center"
+          className="w-full h-[32vh] rounded-xl px-[2vw] relative justify-center items-center"
         >
           <Image
             source={{ uri: thumbnail }}

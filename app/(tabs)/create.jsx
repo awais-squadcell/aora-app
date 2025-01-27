@@ -1,4 +1,4 @@
-import { View, Text, ScrollView, TouchableOpacity, Image, Alert } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Image, Alert, ActivityIndicator } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import FormField from "../../components/FormField";
@@ -107,6 +107,7 @@ const [form, setform] = useState({
               <VideoController
               width={320}
               contentFit={'cover'}
+              controls={false}
               height={200}
               source={form.thumbnail.uri}/>) : (
               <View className="w-full h-[25vh] bg-black-100 rounded-2xl justify-center items-center">
@@ -130,11 +131,13 @@ const [form, setform] = useState({
         handleChangeText={(e)=> setform({ ...form, prompt: e})}
         otherStyles='mt-[3vh]'/>
         <View className="items-center mt-[3vh]">
-        <CustomButton
-        title='Submit & Publish'
-        handlePress={submit}
-        containerStyles='mt-[5vh] w-[50%]'
-        />
+        {uploading 
+        ? (<ActivityIndicator size='large' color='#FFA001'/>) 
+        :(<CustomButton
+          title='Submit & Publish'
+          handlePress={submit}
+          containerStyles='mt-[5vh] w-[50%]'
+          />)}
         </View>
       </ScrollView>
     </SafeAreaView>

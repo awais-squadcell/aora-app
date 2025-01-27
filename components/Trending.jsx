@@ -30,8 +30,8 @@ const TrendingItems = ({ activeItem, item, playingVideoId, setPlayingVideoId }) 
     >
       {isPlaying ? (
         <VideoController
-        height={140}
-        width={140}
+        height={190}
+        width={150}
         contentFit={'cover'}
           source={item.video}
           onVideoEnd={handleVideoEnd}
@@ -45,7 +45,7 @@ const TrendingItems = ({ activeItem, item, playingVideoId, setPlayingVideoId }) 
         >
           <ImageBackground
             source={{ uri: item.thumbnail }}
-            className="w-[40vw] h-[25vh] rounded-3xl overflow-hidden shadow-lg shadow-black/40 m-[2.5vw]"
+            className="w-[40vw] h-[30vh] rounded-3xl overflow-hidden shadow-lg shadow-black/40 m-[2.5vw]"
             resizeMode="cover"
           />
         </TouchableOpacity>
