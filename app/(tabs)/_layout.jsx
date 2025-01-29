@@ -4,7 +4,7 @@ import { icons } from "../../constants";
 
 const TabIcon = ({ icon, color, name, focused }) => {
   return (
-    <View className="gap-1 w-[20vw] justify-center items-center mt-[3.5vh]">
+    <View className="gap-1 w-[20vw] justify-center items-center mt-[2.5vh]">
       <Image source = {icon}
       resizeMode = 'contain' tintColor = {color} 
       className=" h-[4vh] w-[5vw]"/>
@@ -26,7 +26,7 @@ const TabsLayout = () => {
         tabBarStyle: {
           backgroundColor: '#161622',
           borderTopWidth: 0.3,
-          height: 65,
+          height: '7%',
         }
       }}>
         <Tabs.Screen name='home'
@@ -40,14 +40,14 @@ const TabsLayout = () => {
             focused = {focused}/>
           )
         }}/>
-        <Tabs.Screen name='bookmark'
+        <Tabs.Screen name='favorite'
         options={{
-          title: 'Bookmark', headerShown: false, 
+          title: 'Favorite', headerShown: false, 
           tabBarIcon: ({color, focused})=> (
             <TabIcon
             icon = {icons.bookmark}
             color = {color}
-            name = 'Bookmark'
+            name = 'Favorite'
             focused = {focused}/>
           )
         }}/>
