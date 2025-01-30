@@ -34,7 +34,7 @@
       [
         "expo-av",
         {
-          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone."
+          "microphonePermission": "Allow Aura to access your microphone."
         }
       ],
       [

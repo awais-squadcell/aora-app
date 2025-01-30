@@ -4,7 +4,7 @@ import { icons } from "../constants";
 import VideoController from './VideoController';
 import Options from './Options';
 
-const VideoCards = ({ video: { title, thumbnail, video, creator } }) => {
+const VideoCards = ({ video: { title, thumbnail, video, creator, $id } }) => {
     const [playingVideoId, setPlayingVideoId] = useState(null);
     const [showOptions, setShowOptions] = useState(false);
 
@@ -54,7 +54,9 @@ const VideoCards = ({ video: { title, thumbnail, video, creator } }) => {
                     </TouchableOpacity>
 
                     {/* Render the Options menu */}
-                    <Options isVisible={showOptions} />
+                    <Options 
+                    isVisible={showOptions}
+                    videoId={$id} />
                 </View>
             </View>
 

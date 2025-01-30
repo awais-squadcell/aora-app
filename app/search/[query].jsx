@@ -49,6 +49,7 @@ useEffect(() => {
         )}
         ListEmptyComponent={()=>(
           <EmptyState
+          btnShown= {false}
           title = 'No Videos Found'
           subtitle = 'No videos found for this title or name.'/>
         )}
