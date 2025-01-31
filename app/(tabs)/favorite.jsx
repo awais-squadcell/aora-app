@@ -6,6 +6,7 @@ import EmptyState from '../../components/EmptyState';
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { useEffect, useState } from 'react';
 import { fetchSavedVideos } from '../../lib/appwrite';
+import VideoCards from '../../components/VideoCards';
 
 const Favorite = () => {
     const [refreshing, setRefreshing] = useState(false);
@@ -35,6 +36,9 @@ const Favorite = () => {
             <FlatList
                 data={savedVideos}
                 keyExtractor={(item) => item.$id}
+                renderItem={({ item }) => (
+                    <VideoCards video = {item ?? []}/>
+                )}
                 ListHeaderComponent={() => (
                     <View className="px-[3vw] my-[2vh]">
                         <View className="flex-1 items-center mb-[2vh]">
@@ -43,12 +47,6 @@ const Favorite = () => {
                             </Text>
                         </View>
                         <SearchInput />
-                    </View>
-                )}
-                renderItem={({ item }) => (
-                    <View className="p-4 border-b border-gray-700">
-                        <Text className="text-white font-psemibold">{item.title}</Text>
-                        <Text className="text-gray-500 font-pregular">{item.creator?.username || "Unknown User"}</Text>
                     </View>
                 )}
                 ListEmptyComponent={() => (
